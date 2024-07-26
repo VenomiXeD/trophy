@@ -22,5 +22,9 @@
     "prettier": "^3.3.3",
     "roblox-ts": "^2.3.0",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "rbxts-transform-debug": "^2.2.0",
+    "rbxts-transform-env": "^2.2.0"
   }
 }
