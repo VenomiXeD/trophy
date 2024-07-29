@@ -1,4 +1,5 @@
 import type { BindingManager } from "clientmodules/clienthandler.module";
+import { IIBindingManager } from "types/system";
 
 abstract class ModuleBase {
 	public GetModuleName(): string {
@@ -10,7 +11,7 @@ abstract class ModuleBase {
 	 * Registers any keys, **only** called on the **client**
 	 * @param bindManager The binding manager, passed by the internal system
 	 */
-	abstract RegisterKeys(bindManager: BindingManager): boolean;
+	abstract RegisterKeys(bindManager: IIBindingManager): boolean;
 }
 
 export { ModuleBase, BindingManager };

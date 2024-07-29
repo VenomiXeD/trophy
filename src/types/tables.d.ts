@@ -2,7 +2,7 @@ interface DummyTable {
 	[key: string]: unknown;
 }
 
-interface TrophyConfiguration {
+interface TrophyConfiguration extends DummyTable {
 	AdvancedDamageSystem: boolean;
 }
 

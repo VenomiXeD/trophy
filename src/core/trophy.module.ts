@@ -2,7 +2,7 @@ import type { HandlerProxy } from "core/handlerproxy.module";
 import type { UpdateManager } from "./updatemanager.module";
 import { ClientHandler } from "clientmodules/clienthandler.module";
 import { ServerHandler } from "servermodules/serverhandler.module";
-import { TrophyReferences } from "./references";
+import { TrophyReferences } from "./references.module";
 import { $error, $print } from "rbxts-transform-debug";
 
 /**

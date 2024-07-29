@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rbxtsc && npm run add-native-comments",
-    "watch": "rbxtsc -w && npm run add-native-comments"
+    "build": "rbxtsc",
+    "watch": "rbxtsc -w"
   },
   "keywords": [],
   "author": "",
