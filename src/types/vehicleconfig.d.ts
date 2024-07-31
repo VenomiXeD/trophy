@@ -6,6 +6,7 @@ interface VehicleConfiguration {
 
 interface ModuleConfiguration extends DummyTable {
 	ModuleName: string;
+	Priority: number | undefined;
 }
 
 export { VehicleConfiguration, ModuleConfiguration };
