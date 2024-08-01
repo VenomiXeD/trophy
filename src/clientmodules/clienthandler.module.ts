@@ -5,7 +5,7 @@ import { TrophyReferences } from "core/references.module";
 import { DummyTable } from "types/tables";
 import { $env, $NODE_ENV } from "rbxts-transform-env";
 import { $keysof, $package, $print } from "rbxts-transform-debug";
-import { ModuleBase } from "common/modulebase";
+import { ModuleBase } from "commonmodules/modulebase";
 import { IIBindingManager } from "types/system";
 
 const CAS = game.GetService("ContextActionService");
@@ -76,6 +76,7 @@ class ClientHandler extends HandlerProxy {
 			.map((x) => x as unknown as ModuleBase)
 			.forEach((x) => {
 				this.InitializeModule(x);
+				x.Initialize();
 			});
 	}
 }

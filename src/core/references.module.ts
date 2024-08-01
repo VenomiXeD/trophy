@@ -3,6 +3,7 @@ import { $package } from "rbxts-transform-debug";
 export class TrophyReferences {
 	// public static TrophyInstance: Trophy = new Trophy();
 	public static TrophyBaseInstanceName = "TROPHYSYS";
+	public static TrophyCollectionPrefix = this.TrophyBaseInstanceName + "COL_";
 	public static TrophyVersion: string = $package.version;
 	public static TrophyLogInfo: string = "[TROPHY INFO]";
 	public static TrophyLogWarn: string = "[TROPHY WARN]";
