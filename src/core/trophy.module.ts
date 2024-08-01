@@ -5,6 +5,8 @@ import { ServerHandler } from "servermodules/serverhandler.module";
 import { TrophyReferences } from "./references.module";
 import { $error, $print } from "rbxts-transform-debug";
 
+type TrophyState = "UNLOADED" | "INITIALIZING" | "READY";
+let SystemState: TrophyState = "UNLOADED";
 /**
  * Responsible for initializing the Trophy System
  */
@@ -16,6 +18,7 @@ class Trophy {
 	public References: TrophyReferences = new TrophyReferences();
 
 	constructor() {
+		SystemState = "INITIALIZING";
 		const isServer = game.GetService("RunService").IsServer();
 		print(TrophyReferences.TrophyLogInfo + "Starting Trophy on side: " + (isServer ? "Server" : "Client"));
 		if (isServer) {
@@ -28,6 +31,10 @@ class Trophy {
 		}
 	}
 
+	public GetState() {
+		return SystemState;
+	}
+
 	/**
 	 * Initializes the system
 	 * @returns Returns if the initialization was successful
@@ -35,6 +42,7 @@ class Trophy {
 	public Initialize(): boolean {
 		this.CoreHandler.Initialize(this);
 
+		SystemState = "READY";
 		return true;
 	}
 
@@ -59,4 +67,4 @@ class Trophy {
 	}
 }
 
-export { Trophy, GlobalTrophyInstance };
+export { Trophy, GlobalTrophyInstance, SystemState };

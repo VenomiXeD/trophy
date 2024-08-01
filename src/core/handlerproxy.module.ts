@@ -1,5 +1,5 @@
 import { ClientHandler } from "clientmodules/clienthandler.module";
-import { ModuleBase } from "common/modulebase";
+import { ModuleBase } from "commonmodules/modulebase";
 import { Trophy } from "core/trophy.module";
 
 abstract class HandlerProxy {
@@ -15,15 +15,25 @@ abstract class HandlerProxy {
 	}
 
 	public GetModulesInstances(): readonly Instance[] {
+		const result: Array<Instance> = [];
 		if (this.IsServer()) {
-			return (script?.Parent?.Parent?.WaitForChild("servermodules") as Instance)
+			(script?.Parent?.Parent?.WaitForChild("servermodules") as Instance)
 				.GetDescendants()
-				.filter((x) => x.IsA("ModuleScript"));
+				.filter((x) => x.IsA("ModuleScript"))
+				.forEach((x) => result.push(x));
 		} else {
-			return (script?.Parent?.Parent?.WaitForChild("clientmodules") as Instance)
+			(script?.Parent?.Parent?.WaitForChild("clientmodules") as Instance)
 				.GetDescendants()
-				.filter((x) => x.IsA("ModuleScript"));
+				.filter((x) => x.IsA("ModuleScript"))
+				.forEach((x) => result.push(x));
 		}
+
+		script.Parent?.Parent?.WaitForChild("commonmodules")
+			.GetDescendants()
+			.filter((x) => x.IsA("ModuleScript"))
+			.forEach((x) => result.push(x));
+
+		return result;
 	}
 
 	public GetModules(): readonly ModuleBase[] {
